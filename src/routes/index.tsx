@@ -360,17 +360,54 @@ function Index() {
             </article>
           </div>
 
-          {/* Photo placeholder */}
-          <div
-            className="mt-16 rounded-2xl border border-dashed border-pine/30 bg-cream/60 p-10 text-center"
-            data-reveal
-          >
-            <p className="text-xs uppercase tracking-[0.2em] text-pine">Galleria</p>
-            <p className="mx-auto mt-3 max-w-lg text-foreground/70">
-              Le fotografie del locale arriveranno presto. Nel frattempo, il
-              modo migliore per conoscere La Pineta è varcarne la porta.
+        </div>
+      </section>
+
+      {/* CUCINA / GALLERIA */}
+      <section id="cucina" className="relative overflow-hidden bg-background">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-reveal>
+            <div className="max-w-2xl">
+              <p className="mb-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-pine">
+                <PineSprig className="h-4 w-4" />
+                In cucina
+              </p>
+              <h2 className="font-display text-4xl leading-tight text-pine-deep md:text-5xl">
+                Piatti semplici, <span className="italic">gesti antichi</span>.
+              </h2>
+            </div>
+            <p className="max-w-md text-foreground/75 md:text-right">
+              Cucina di casa, di stagione e di valle. Ravioli tirati a mano,
+              brasati che cuociono piano, un carpaccio quando è la giornata giusta.
             </p>
           </div>
+
+          <div className="grid auto-rows-[220px] grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+            {dishes.map((d, i) => (
+              <figure
+                key={d.src}
+                data-reveal
+                style={{ transitionDelay: `${i * 60}ms` }}
+                className={`group relative overflow-hidden rounded-2xl bg-pine-deep shadow-lg shadow-pine-deep/10 ring-1 ring-pine/10 ${d.span}`}
+              >
+                <img
+                  src={d.src}
+                  alt={d.title}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-pine-deep/85 via-pine-deep/10 to-transparent" />
+                <figcaption className="absolute inset-x-0 bottom-0 p-5 text-cream">
+                  <p className="font-display text-lg leading-tight md:text-xl">{d.title}</p>
+                  <p className="mt-1 text-xs text-cream/75 md:text-sm">{d.note}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center text-sm italic text-foreground/60" data-reveal>
+            Il menù cambia con le stagioni. Chiama per sapere cosa c'è oggi in cucina.
+          </p>
         </div>
       </section>
 
