@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
+import carpaccio from "@/assets/carpaccio.jpg.asset.json";
+import gnocchetti from "@/assets/gnocchetti.jpg.asset.json";
+import spezzatinoRavioli from "@/assets/spezzatino-ravioli.jpg.asset.json";
+import brasatoPolenta from "@/assets/brasato-polenta.jpg.asset.json";
+import crespelle from "@/assets/crespelle.jpg.asset.json";
+import cannelloni from "@/assets/cannelloni.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -119,6 +125,15 @@ function Index() {
   const rootRef = useReveal();
 
   const chips = ["Bar caffè", "Colazioni", "Aperitivi", "Consumazione sul posto"];
+
+  const dishes = [
+    { src: carpaccio.url, title: "Carpaccio di manzo", note: "scaglie, rucola, olio buono", span: "md:row-span-2" },
+    { src: cannelloni.url, title: "Cannelloni al ragù", note: "besciamella, forno, tovaglia a quadretti", span: "" },
+    { src: gnocchetti.url, title: "Gnocchetti al grano saraceno", note: "burro fuso e sapore di montagna", span: "" },
+    { src: brasatoPolenta.url, title: "Brasato con polenta", note: "cottura lenta, polenta gialla", span: "md:row-span-2" },
+    { src: crespelle.url, title: "Crespelle in bianco", note: "panna, parmigiano, pepe", span: "" },
+    { src: spezzatinoRavioli.url, title: "Spezzatino e ravioli", note: "un tavolo, due piatti, un bicchiere di rosso", span: "" },
+  ];
 
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground antialiased">
