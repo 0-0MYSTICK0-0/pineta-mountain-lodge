@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import carpaccio from "@/assets/carpaccio.jpg.asset.json";
-import gnocchetti from "@/assets/gnocchetti.jpg.asset.json";
-import spezzatinoRavioli from "@/assets/spezzatino-ravioli.jpg.asset.json";
-import brasatoPolenta from "@/assets/brasato-polenta.jpg.asset.json";
-import crespelle from "@/assets/crespelle.jpg.asset.json";
-import cannelloni from "@/assets/cannelloni.jpg.asset.json";
+const carpaccio = { url: "/images/carpaccio.jpg" };
+const gnocchetti = { url: "/images/gnocchetti.jpg" };
+const spezzatinoRavioli = { url: "/images/spezzatino-ravioli.jpg" };
+const brasatoPolenta = { url: "/images/brasato-polenta.jpg" };
+const crespelle = { url: "/images/crespelle.jpg" };
+const cannelloni = { url: "/images/cannelloni.jpg" };
 
 export const Route = createFileRoute("/")({
   component: Index,
