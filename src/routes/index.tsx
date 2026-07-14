@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
+import carpaccio from "@/assets/carpaccio.jpg.asset.json";
+import gnocchetti from "@/assets/gnocchetti.jpg.asset.json";
+import spezzatinoRavioli from "@/assets/spezzatino-ravioli.jpg.asset.json";
+import brasatoPolenta from "@/assets/brasato-polenta.jpg.asset.json";
+import crespelle from "@/assets/crespelle.jpg.asset.json";
+import cannelloni from "@/assets/cannelloni.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -120,6 +126,15 @@ function Index() {
 
   const chips = ["Bar caffè", "Colazioni", "Aperitivi", "Consumazione sul posto"];
 
+  const dishes = [
+    { src: carpaccio.url, title: "Carpaccio di manzo", note: "scaglie, rucola, olio buono", span: "md:row-span-2" },
+    { src: cannelloni.url, title: "Cannelloni al ragù", note: "besciamella, forno, tovaglia a quadretti", span: "" },
+    { src: gnocchetti.url, title: "Gnocchetti al grano saraceno", note: "burro fuso e sapore di montagna", span: "" },
+    { src: brasatoPolenta.url, title: "Brasato con polenta", note: "cottura lenta, polenta gialla", span: "md:row-span-2" },
+    { src: crespelle.url, title: "Crespelle in bianco", note: "panna, parmigiano, pepe", span: "" },
+    { src: spezzatinoRavioli.url, title: "Spezzatino e ravioli", note: "un tavolo, due piatti, un bicchiere di rosso", span: "" },
+  ];
+
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground antialiased">
       {/* NAV */}
@@ -131,6 +146,7 @@ function Index() {
           </a>
           <nav className="hidden gap-8 text-sm text-cream/80 md:flex">
             <a href="#atmosfera" className="hover:text-amber-glow transition-colors">Atmosfera</a>
+            <a href="#cucina" className="hover:text-amber-glow transition-colors">Cucina</a>
             <a href="#visita" className="hover:text-amber-glow transition-colors">Visita</a>
             <a href="#recensioni" className="hover:text-amber-glow transition-colors">Recensioni</a>
           </nav>
@@ -154,7 +170,8 @@ function Index() {
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6 pt-40 pb-56 md:pt-48 md:pb-72">
-          <div className="max-w-3xl" data-reveal>
+          <div className="grid gap-12 md:grid-cols-12 md:items-center">
+          <div className="md:col-span-8" data-reveal>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-cream/80 backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-amber-glow" />
               Santa Maria Maggiore · Val Vigezzo
@@ -198,6 +215,26 @@ function Index() {
                 <span className="text-cream/60">· 2 recensioni Google</span>
               </div>
             </div>
+          </div>
+
+          <div className="relative hidden md:col-span-4 md:block" data-reveal>
+            <div className="absolute -top-6 -right-4 h-72 w-72 rounded-full bg-amber-glow/20 blur-3xl" aria-hidden />
+            <div className="relative rotate-[3deg] overflow-hidden rounded-3xl border border-cream/15 shadow-2xl shadow-black/40 ring-1 ring-amber-glow/20">
+              <img
+                src={carpaccio.url}
+                alt="Un carpaccio servito al Bistrot La Pineta"
+                className="h-[420px] w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-pine-deep/40 to-transparent" />
+            </div>
+            <div className="absolute -bottom-6 -left-6 -rotate-[5deg] overflow-hidden rounded-2xl border border-cream/15 shadow-xl shadow-black/40 ring-1 ring-amber-glow/20">
+              <img
+                src={crespelle.url}
+                alt="Crespelle in bianco"
+                className="h-40 w-40 object-cover"
+              />
+            </div>
+          </div>
           </div>
         </div>
 
@@ -345,17 +382,54 @@ function Index() {
             </article>
           </div>
 
-          {/* Photo placeholder */}
-          <div
-            className="mt-16 rounded-2xl border border-dashed border-pine/30 bg-cream/60 p-10 text-center"
-            data-reveal
-          >
-            <p className="text-xs uppercase tracking-[0.2em] text-pine">Galleria</p>
-            <p className="mx-auto mt-3 max-w-lg text-foreground/70">
-              Le fotografie del locale arriveranno presto. Nel frattempo, il
-              modo migliore per conoscere La Pineta è varcarne la porta.
+        </div>
+      </section>
+
+      {/* CUCINA / GALLERIA */}
+      <section id="cucina" className="relative overflow-hidden bg-background">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-reveal>
+            <div className="max-w-2xl">
+              <p className="mb-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-pine">
+                <PineSprig className="h-4 w-4" />
+                In cucina
+              </p>
+              <h2 className="font-display text-4xl leading-tight text-pine-deep md:text-5xl">
+                Piatti semplici, <span className="italic">gesti antichi</span>.
+              </h2>
+            </div>
+            <p className="max-w-md text-foreground/75 md:text-right">
+              Cucina di casa, di stagione e di valle. Ravioli tirati a mano,
+              brasati che cuociono piano, un carpaccio quando è la giornata giusta.
             </p>
           </div>
+
+          <div className="grid auto-rows-[220px] grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+            {dishes.map((d, i) => (
+              <figure
+                key={d.src}
+                data-reveal
+                style={{ transitionDelay: `${i * 60}ms` }}
+                className={`group relative overflow-hidden rounded-2xl bg-pine-deep shadow-lg shadow-pine-deep/10 ring-1 ring-pine/10 ${d.span}`}
+              >
+                <img
+                  src={d.src}
+                  alt={d.title}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-pine-deep/85 via-pine-deep/10 to-transparent" />
+                <figcaption className="absolute inset-x-0 bottom-0 p-5 text-cream">
+                  <p className="font-display text-lg leading-tight md:text-xl">{d.title}</p>
+                  <p className="mt-1 text-xs text-cream/75 md:text-sm">{d.note}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center text-sm italic text-foreground/60" data-reveal>
+            Il menù cambia con le stagioni. Chiama per sapere cosa c'è oggi in cucina.
+          </p>
         </div>
       </section>
 
