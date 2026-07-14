@@ -146,6 +146,7 @@ function Index() {
           </a>
           <nav className="hidden gap-8 text-sm text-cream/80 md:flex">
             <a href="#atmosfera" className="hover:text-amber-glow transition-colors">Atmosfera</a>
+            <a href="#cucina" className="hover:text-amber-glow transition-colors">Cucina</a>
             <a href="#visita" className="hover:text-amber-glow transition-colors">Visita</a>
             <a href="#recensioni" className="hover:text-amber-glow transition-colors">Recensioni</a>
           </nav>
@@ -169,7 +170,8 @@ function Index() {
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6 pt-40 pb-56 md:pt-48 md:pb-72">
-          <div className="max-w-3xl" data-reveal>
+          <div className="grid gap-12 md:grid-cols-12 md:items-center">
+          <div className="md:col-span-8" data-reveal>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-cream/80 backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-amber-glow" />
               Santa Maria Maggiore · Val Vigezzo
@@ -213,6 +215,26 @@ function Index() {
                 <span className="text-cream/60">· 2 recensioni Google</span>
               </div>
             </div>
+          </div>
+
+          <div className="relative hidden md:col-span-4 md:block" data-reveal>
+            <div className="absolute -top-6 -right-4 h-72 w-72 rounded-full bg-amber-glow/20 blur-3xl" aria-hidden />
+            <div className="relative rotate-[3deg] overflow-hidden rounded-3xl border border-cream/15 shadow-2xl shadow-black/40 ring-1 ring-amber-glow/20">
+              <img
+                src={carpaccio.url}
+                alt="Un carpaccio servito al Bistrot La Pineta"
+                className="h-[420px] w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-pine-deep/40 to-transparent" />
+            </div>
+            <div className="absolute -bottom-6 -left-6 -rotate-[5deg] overflow-hidden rounded-2xl border border-cream/15 shadow-xl shadow-black/40 ring-1 ring-amber-glow/20">
+              <img
+                src={crespelle.url}
+                alt="Crespelle in bianco"
+                className="h-40 w-40 object-cover"
+              />
+            </div>
+          </div>
           </div>
         </div>
 
